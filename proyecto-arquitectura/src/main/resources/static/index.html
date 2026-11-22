@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sistema de inventario de productos de una jugueteria">
+    <title>Inventario de productos</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/inventario.css">
+</head>
+<body>
+    <header>
+        <h1>Inventario de productos</h1>
+        <nav aria-label="Navegacion principal">
+            <a href="" id="enlaceCerrarSesion">Cerrar sesion</a>
+        </nav>
+    </header>
+
+    <main>
+        <section aria-labelledby="tituloFormularioProducto" class="seccionFormularioProducto">
+            <h2 class= titulos id="tituloFormularioProducto">Agregar o editar producto</h2>
+
+            <form class="formularioProducto"id="formularioProducto">
+                <input type="hidden" id="inputIdProducto" name="idProducto">
+
+                <div class="campoFormulario">
+                    <label class="labelCampoFormulario" for="inputNombreProducto">Nombre del producto</label>
+                    <input class="inputCampoFormulario"
+                        type="text"
+                        id="inputNombreProducto"
+                        name="nombreProducto"
+                        maxlength="100"
+                        placeholder="Ej. Lego Classic"
+                        required
+                    >
+                </div>
+
+                <div class="campoFormulario">
+                    <label class="labelCampoFormulario" for="inputPrecioProducto">Precio</label>
+                    <input class="inputCampoFormulario"
+                        type="number"
+                        id="inputPrecioProducto"
+                        name="precioProducto"
+                        min="0.01"
+                        step="0.01"
+                        placeholder="Ej. 499.90"
+                        required
+                    >
+                </div>
+
+                <div class="campoFormulario">
+                    <label class="labelCampoFormulario" for="inputStockProducto">Stock</label>
+                    <input class="inputCampoFormulario"
+                        type="number"
+                        id="inputStockProducto"
+                        name="stockProducto"
+                        min="0"
+                        step="1"
+                        placeholder="Ej. 10"
+                        required
+                    >
+                </div>
+
+                <div class="campoFormulario">
+                    <label class="labelCampoFormulario" for="inputCategoriaProducto">Categoria</label>
+                    <select class="selectCampoFormulario"
+                        id="inputCategoriaProducto"
+                        name="categoriaProducto"
+                        required
+                    >
+                        <option value="">Selecciona una categoria</option>
+                        <option value="Construccion">Construccion</option>
+                        <option value="Figuras de accion">Figuras de accion</option>
+                        <option value="Juegos de mesa">Juegos de mesa</option>
+                        <option value="Juguetes educativos">Juguetes educativos</option>
+                        <option value="Manualidades">Manualidades</option>
+                        <option value="Muñecas">Muñecas</option>
+                        <option value="Peluches">Peluches</option>
+                        <option value="Primera infancia">Primera infancia</option>
+                        <option value="Vehiculos">Vehiculos</option>
+                        <option value="Juguetes de aire libre">Juguetes de aire libre</option>
+                    </select>
+                </div>
+
+                <div class="campoFormulario">
+                    <span class="labelCampoFormulario">Selecciona la imagen</span>
+
+                    <div class="contenedorArchivo">
+                        <label class="botonArchivo" for="inputImagenProducto">Elegir archivo</label>
+                        <span id="textoNombreArchivo">Ningún archivo seleccionado</span>
+                        <input
+                            class="inputCampoFormulario"
+                            type="file"
+                            id="inputImagenProducto"
+                            name="imagenProducto"
+                            accept="image/*"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <div>
+                    <button type="submit" class="botonInventario" id="botonGuardarProducto">Guardar producto</button>
+                    <button type="reset" class="botonInventario" id="botonLimpiarFormulario">Limpiar formulario</button>
+                </div>
+            </form>
+
+            <p class="mensaje" id="mensajeFormularioProducto" role="alert" aria-live="polite"></p>
+        </section>
+
+        <section aria-labelledby="tituloListaProductos" class="seccionListaProductos">
+            <h2 class="titulos" id="tituloListaProductos">Lista de productos</h2>
+
+            <label for="inputBusquedaProducto">Buscar producto</label>
+            <input
+                type="search"
+                id="inputBusquedaProducto"
+                name="busquedaProducto"
+                placeholder="Buscar por nombre o categoria"
+            >
+
+            <p class="mensaje" id="mensajeListaProductos" role="status" aria-live="polite"></p>
+
+            <table id="tablaProductos" class="tablaProductos">
+                <caption>Productos registrados en el inventario</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Imagen</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Stock</th>
+                        <th scope="col">Categoria</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="cuerpoTablaProductos"></tbody>
+            </table>
+        </section>
+    </main>
+
+    <script src="/js/script.js" defer></script>
+</body>
+</html>
